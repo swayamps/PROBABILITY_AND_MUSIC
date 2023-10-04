@@ -1,0 +1,2 @@
+#plt.plot(grouped['Week'], dt_reg.predict(grouped['Week_Num'].values.reshape(-1, 1)), color='red', linewidth=2, label='Decision Tree Regression')
+#plt.plot(grouped['Week'], rf_reg.predict(grouped['Week_Num'].values.reshape(-1, 1)), color='orange', linewidth=2, label='Random Forest Regression')

@@ -1,0 +1,1 @@
+Artist Count Over the Years - Second Top Artist: 
