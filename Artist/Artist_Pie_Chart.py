@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load and preprocess the dataset
-df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/charts.csv")
+df = pd.read_csv("charts.csv")
 df['Week'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 
 # Calculate the frequency of each artist

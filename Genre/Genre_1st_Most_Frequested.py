@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load and preprocess the dataset
-df=pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+df=pd.read_csv("billboardHot100_1999-2019.csv")
 
 df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 

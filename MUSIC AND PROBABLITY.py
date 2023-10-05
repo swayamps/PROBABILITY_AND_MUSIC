@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-df=pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/charts.csv")
+df=pd.read_csv("charts.csv")
 
 frequency_Artists = df['Artists'].value_counts()
 print(frequency_Artists)
@@ -20,7 +20,7 @@ print(frequency_Song)
 
 # import pandas as pd
 
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/charts.csv")
+# df = pd.read_csv("charts.csv")
 
 # frequency_song = df['Name'].value_counts()
 # for song_name, count in frequency_song.items():

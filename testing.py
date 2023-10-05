@@ -2,7 +2,7 @@
 # import matplotlib.pyplot as plt
 
 # # Load and preprocess the dataset
-# df=pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df=pd.read_csv("billboardHot100_1999-2019.csv")
 
 
 # df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
@@ -165,7 +165,7 @@
 # import matplotlib.pyplot as plt
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 
 # # Convert year column to datetime format
 # df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
@@ -206,7 +206,7 @@
 # import matplotlib.pyplot as plt
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 
 # # Convert year column to datetime format
 # df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
@@ -250,7 +250,7 @@
 # import matplotlib.pyplot as plt
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 
 # # Convert year column to datetime format
 # df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
@@ -294,7 +294,7 @@
 # import matplotlib.pyplot as plt
 
 # # Load and preprocess the dataset
-# df=pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df=pd.read_csv("billboardHot100_1999-2019.csv")
 
 # df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 
@@ -352,7 +352,7 @@
 # from sklearn.metrics import r2_score
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 # df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 # df['Genres'] = df['Genre'].str.split(',')
 
@@ -402,7 +402,7 @@
 # from sklearn.metrics import r2_score
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 # df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 # df['Genres'] = df['Genre'].str.split(',')
 
@@ -459,7 +459,7 @@
 # from sklearn.metrics import r2_score
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 # df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 # df['Genres'] = df['Genre'].str.split(',')
 # df = df.explode('Genre')
@@ -516,7 +516,7 @@
 # from sklearn.metrics import r2_score
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 # df['Week'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 # df['Genres'] = df['Genre'].str.split(',')
 
@@ -573,7 +573,7 @@
 # from sklearn.metrics import r2_score
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 # df['Week'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 # df['Genres'] = df['Genre'].str.split(',')
 
@@ -640,7 +640,7 @@
 # from sklearn.metrics import r2_score
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 # df['Week'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 # df['Genres'] = df['Genre'].str.split(',')
 
@@ -797,7 +797,7 @@
 # from sklearn.metrics import r2_score
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 # df['Week'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 # df['Genres'] = df['Genre'].str.split(',')
 
@@ -915,7 +915,7 @@
 # from sklearn.metrics import r2_score
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 # df['Week'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 # df['Genres'] = df['Genre'].str.split(',')
 
@@ -1054,7 +1054,7 @@
 # from sklearn.ensemble import RandomForestRegressor
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 # df['Week'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 # df['Genres'] = df['Genre'].str.split(',')
 
@@ -1128,7 +1128,7 @@
 # from sklearn.ensemble import RandomForestRegressor
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 # df['Week'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 # df['Genres'] = df['Genre'].str.split(',')
 
@@ -1189,7 +1189,7 @@
 # from sklearn.ensemble import RandomForestRegressor
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 # df['Week'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 # df['Genres'] = df['Genre'].str.split(',')
 
@@ -1252,7 +1252,7 @@
 # from sklearn.ensemble import RandomForestRegressor
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 # df['Week'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 # df['Genres'] = df['Genre'].str.split(',')
 
@@ -1319,7 +1319,7 @@
 # from sklearn.ensemble import RandomForestRegressor
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 # df['Week'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 # df['Genres'] = df['Genre'].str.split(',')
 
@@ -1392,7 +1392,7 @@
 # from sklearn.metrics import r2_score
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 # df['Week'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 # df['Genres'] = df['Genre'].str.split(',')
 
@@ -1499,7 +1499,7 @@
 # from sklearn.metrics import r2_score
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 # df['Week'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 
 # # Group and aggregate data at the weekly level for the Artistss
@@ -1600,7 +1600,7 @@
 # import matplotlib.pyplot as plt
 
 # # Load and preprocess the dataset
-# df=pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/charts.csv")
+# df=pd.read_csv("charts.csv")
 
 # # Convert year column to datetime format
 # df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
@@ -1629,7 +1629,7 @@
 # import matplotlib.pyplot as plt
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 # df['Week'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 # df['Genres'] = df['Genre'].str.split(',')
 # df = df.explode('Genre')
@@ -1659,7 +1659,7 @@
 # import matplotlib.pyplot as plt
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 # df['Week'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 # df['Genres'] = df['Genre'].str.split(',')
 # df = df.explode('Genres')
@@ -1695,7 +1695,7 @@
 # from sklearn.metrics import accuracy_score
 
 # # Load and preprocess the dataset
-# df = pd.read_csv("C:/Users/swaya/OneDrive/Desktop/billboardHot100_1999-2019.csv/billboardHot100_1999-2019.csv")
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
 # df['Genres'] = df['Genre'].str.split(',')
 
 # # Flatten the list of genres
