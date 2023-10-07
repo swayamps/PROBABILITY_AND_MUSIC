@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Load and preprocess the dataset
 df = pd.read_csv("billboardHot100_1999-2019.csv")

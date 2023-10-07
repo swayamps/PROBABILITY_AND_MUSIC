@@ -1724,72 +1724,72 @@
 # accuracy = accuracy_score(y_test, y_pred)
 # print(f"Accuracy: {accuracy:.2f}")
 
-import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression, Ridge, Lasso, ElasticNet
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.ensemble import RandomForestClassifier, GradientBoostingRegressor
-from sklearn.svm import SVR
-from sklearn.metrics import r2_score
-# Load and preprocess the dataset
-df = pd.read_csv("billboardHot100_1999-2019.csv")
-df['Week'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
-df['Genres'] = df['Genre'].str.split(',')
-df=df.explode('Genre')
+# import pandas as pd
+# import matplotlib.pyplot as plt
+# from sklearn.model_selection import train_test_split
+# from sklearn.linear_model import LinearRegression, Ridge, Lasso, ElasticNet
+# from sklearn.tree import DecisionTreeRegressor
+# from sklearn.ensemble import RandomForestClassifier, GradientBoostingRegressor
+# from sklearn.svm import SVR
+# from sklearn.metrics import r2_score
+# # Load and preprocess the dataset
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
+# df['Week'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
+# df['Genres'] = df['Genre'].str.split(',')
+# df=df.explode('Genre')
 
-# Flatten the list of genres
-genres_list = [genre for genres in df['Genres'] for genre in genres]
+# # Flatten the list of genres
+# genres_list = [genre for genres in df['Genres'] for genre in genres]
 
-# Calculate the frequency of each genre
-genre_counts = pd.Series(genres_list).value_counts()
+# # Calculate the frequency of each genre
+# genre_counts = pd.Series(genres_list).value_counts()
 
-# Get the genre with the highest frequency
-top_genre = genre_counts.index[0]
+# # Get the genre with the highest frequency
+# top_genre = genre_counts.index[0]
 
-# Filter the dataset for the top genre
-top_genre_data = df[df['Genres'].apply(lambda x: top_genre in x)]
+# # Filter the dataset for the top genre
+# top_genre_data = df[df['Genres'].apply(lambda x: top_genre in x)]
 
-# Group and aggregate data at the weekly level for the top genre
-grouped = top_genre_data.groupby('Week').size().reset_index(name='Count')
+# # Group and aggregate data at the weekly level for the top genre
+# grouped = top_genre_data.groupby('Week').size().reset_index(name='Count')
 
-# Convert dates to numerical representation
-ref_date = grouped['Week'].min()
-grouped['Week_Num'] = (grouped['Week'] - ref_date).dt.days
+# # Convert dates to numerical representation
+# ref_date = grouped['Week'].min()
+# grouped['Week_Num'] = (grouped['Week'] - ref_date).dt.days
 
-# Split the data into training and test sets
-x_train, x_test, y_train, y_test = train_test_split(grouped['Week_Num'], grouped['Count'], test_size=0.2, random_state=0)
+# # Split the data into training and test sets
+# x_train, x_test, y_train, y_test = train_test_split(grouped['Week_Num'], grouped['Count'], test_size=0.2, random_state=0)
 
-# Reshape the training and test data
-x_train = x_train.values.reshape(-1, 1)
-x_test = x_test.values.reshape(-1, 1)
-y_train = y_train.values.reshape(-1, 1)
-y_test = y_test.values.reshape(-1, 1)
-
-
-# Linear Regression
-linear_reg = LinearRegression()
-linear_reg.fit(x_train, y_train)
-linear_pred = linear_reg.predict(x_test)
-linear_score = r2_score(y_test, linear_pred)
+# # Reshape the training and test data
+# x_train = x_train.values.reshape(-1, 1)
+# x_test = x_test.values.reshape(-1, 1)
+# y_train = y_train.values.reshape(-1, 1)
+# y_test = y_test.values.reshape(-1, 1)
 
 
-# Decision Tree Regression
-dt_reg = DecisionTreeRegressor(random_state=0)
-dt_reg.fit(x_train, y_train)
-dt_pred = dt_reg.predict(x_test)
-dt_score = r2_score(y_test, dt_pred)
-
-# Random Forest Regression
-rf_reg = RandomForestClassifier(random_state=0)
-rf_reg.fit(x_train, y_train)
-rf_pred = rf_reg.predict(x_test)
-rf_score = r2_score(y_test, rf_pred)
+# # Linear Regression
+# linear_reg = LinearRegression()
+# linear_reg.fit(x_train, y_train)
+# linear_pred = linear_reg.predict(x_test)
+# linear_score = r2_score(y_test, linear_pred)
 
 
-# Print the accuracy scores
-# print("Decision Tree Regression Accuracy: {:.2f}%".format(dt_score * 100))
-print("Random Forest Regression Accuracy: {:.2f}%".format(rf_score * 100))
+# # Decision Tree Regression
+# dt_reg = DecisionTreeRegressor(random_state=0)
+# dt_reg.fit(x_train, y_train)
+# dt_pred = dt_reg.predict(x_test)
+# dt_score = r2_score(y_test, dt_pred)
+
+# # Random Forest Regression
+# rf_reg = RandomForestClassifier(random_state=0)
+# rf_reg.fit(x_train, y_train)
+# rf_pred = rf_reg.predict(x_test)
+# rf_score = r2_score(y_test, rf_pred)
+
+
+# # Print the accuracy scores
+# # print("Decision Tree Regression Accuracy: {:.2f}%".format(dt_score * 100))
+# print("Random Forest Regression Accuracy: {:.2f}%".format(rf_score * 100))
 
 
 
@@ -1830,3 +1830,511 @@ print("Random Forest Regression Accuracy: {:.2f}%".format(rf_score * 100))
 # plt.title('Genre Count Over the Weeks - Top Genre: ' + top_genre)
 # plt.legend()
 # plt.show()
+
+# import pandas as pd
+# import matplotlib.pyplot as plt
+# from sklearn.model_selection import train_test_split
+# from sklearn.linear_model import LinearRegression
+# from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+# from sklearn.compose import ColumnTransformer
+# from sklearn.metrics import r2_score
+
+# # Load and preprocess the dataset
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
+# df['Week'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
+# df['Genres'] = df['Genre'].str.split(',')
+
+# # Flatten the list of genres
+# genres_list = [genre for genres in df['Genres'] for genre in genres]
+
+# # Calculate the frequency of each genre
+# genre_counts = pd.Series(genres_list).value_counts()
+
+# # Get the genre with the highest frequency
+# top_genre = genre_counts.index[0]
+
+# # Filter the dataset for the top genre
+# top_genre_data = df[df['Genres'].apply(lambda x: top_genre in x)]
+
+# # Group and aggregate data at the weekly level for the top genre
+# grouped = top_genre_data.groupby('Week').size().reset_index(name='Count')
+
+# # Convert dates to numerical representation
+# ref_date = grouped['Week'].min()
+# grouped['Week_Num'] = (grouped['Week'] - ref_date).dt.days
+
+# # Encode categorical features: Artists and Year
+# cat_features = ['Artists']
+# num_features = ['Week_Num']
+# target = 'Count'
+
+# # Perform one-hot encoding for categorical features
+# preprocessor = ColumnTransformer(
+#     transformers=[
+#         ('cat', OneHotEncoder(), cat_features),
+#     ],
+#     remainder='passthrough'
+# )
+
+# # Split the data into training and test sets
+# X_train, X_test, y_train, y_test = train_test_split(
+#     grouped[cat_features + num_features], grouped[target], test_size=0.2, random_state=0
+# )
+
+# # Preprocess and encode the training and test data
+# X_train_encoded = preprocessor.fit_transform(X_train)
+# X_test_encoded = preprocessor.transform(X_test)
+
+# # Train the linear regression model
+# model = LinearRegression()
+# model.fit(X_train_encoded, y_train)
+
+# # Predict the target variable on the testing data
+# y_pred = model.predict(X_test_encoded)
+
+# # Calculate the R-squared score
+# r2 = r2_score(y_test, y_pred)
+
+# # Print the R-squared score
+# print("R-squared score:", r2)
+
+# import pandas as pd
+# import seaborn as sns
+# import matplotlib.pyplot as plt
+
+# # Load the dataset
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
+
+# # Perform Seaborn analysis
+# # Example 1: Countplot of Genres
+# plt.figure(figsize=(12, 6))
+# sns.countplot(data=df, x='Genre')
+# plt.xticks(rotation=90)
+# plt.title('Countplot of Genres')
+# plt.show()
+
+# # Example 2: Lineplot of Genre Count over Time
+# plt.figure(figsize=(12, 6))
+# sns.lineplot(data=df, x='Week', y='Count', estimator='sum')
+# plt.xlabel('Week')
+# plt.ylabel('Genre Count')
+# plt.title('Genre Count over Time')
+# plt.show()
+
+# # Example 3: Boxplot of Genre Count by Year
+# plt.figure(figsize=(12, 6))
+# sns.boxplot(data=df, x='Year', y='Count')
+# plt.xticks(rotation=90)
+# plt.xlabel('Year')
+# plt.ylabel('Genre Count')
+# plt.title('Genre Count by Year')
+# plt.show()
+
+
+
+# import pandas as pd
+# import seaborn as sns
+
+# # Load the dataset
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
+
+# # Perform Seaborn interactive analysis
+# # Example: Scatter plot of Genre Count over Time
+# sns.relplot(data=df, x='Week', y='Count', hue='Genre', kind='scatter', height=6, aspect=2)
+
+# # Example: Line plot of Genre Count by Year
+# sns.relplot(data=df, x='Year', y='Count', hue='Genre', kind='line', height=6, aspect=2)
+
+# # Example: Box plot of Genre Count by Year
+# sns.catplot(data=df, x='Year', y='Count', hue='Genre', kind='box', height=6, aspect=2)
+
+# # Show the plots
+# plt.show()
+
+# import pandas as pd
+# import seaborn as sns
+# import matplotlib.pyplot as plt
+
+# # Load and preprocess the dataset
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
+
+# df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
+
+# # Split the genre column into a list of genres
+# df['Genres'] = df['Genre'].str.split(',')
+
+# # Flatten the list of genres
+# genres_list = [genre for genres in df['Genres'] for genre in genres]
+
+# # Calculate the frequency of each genre
+# genre_counts = pd.Series(genres_list).value_counts()
+
+# # Get the genre with the highest frequency
+# top_genre = genre_counts.idxmax()
+
+# # Filter the dataset for the top genre
+# top_genre_data = df[df['Genres'].apply(lambda x: top_genre in x)]
+
+# # Group and aggregate data at the yearly level for the top genre
+# grouped = top_genre_data.groupby('Year').size().reset_index(name='Count')
+
+# # Set Seaborn style
+# sns.set(style="whitegrid")
+
+# # Create the line plot using Seaborn
+# plt.figure(figsize=(10, 6))
+# sns.lineplot(x='Year', y='Count', data=grouped, label=top_genre)
+
+# plt.xlabel('Year')
+# plt.ylabel('Genre Count')
+# plt.title('Genre Count Over the Years - Top Genre: ' + top_genre)
+# plt.legend()
+# plt.show()
+
+
+# import pandas as pd
+# import matplotlib.pyplot as plt
+# import seaborn as sns
+
+# # Load and preprocess the dataset
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
+# df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
+
+# # Split the genre column into a list of genres
+# df['Genre'] = df['Genre'].str.split(',')
+
+# # Explode the 'Genre' column to separate rows for each genre
+# df = df.explode('Genre')
+
+# # Count the frequency of each genre
+# genre_counts = df['Genre'].value_counts()
+
+# # Extract the top two genres
+# top_two_genres = genre_counts.index[:2]
+
+# # Filter the dataset for the top two genres
+# genre_data = df[df['Genre'].isin(top_two_genres)]
+
+# # Group and aggregate data at the yearly level for the top two genres
+# grouped = genre_data.groupby(['Year', 'Genre']).size().reset_index(name='Count')
+
+# # Set Seaborn style
+# sns.set(style="whitegrid")
+
+# # Create the line plot using Seaborn
+# plt.figure(figsize=(10, 6))
+# sns.lineplot(x='Year', y='Count', hue='Genre', data=grouped)
+
+# plt.xlabel('Year')
+# plt.ylabel('Frequency')
+# plt.title('Comparison of Top Two Genres Over the Years')
+# plt.legend(title='Genre')
+# plt.show()
+
+
+# import pandas as pd
+# import plotly.express as px
+
+# # Load and preprocess the dataset
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
+# df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
+
+# # Split the genre column into a list of genres
+# df['Genre'] = df['Genre'].str.split(',')
+
+# # Explode the 'Genre' column to separate rows for each genre
+# df = df.explode('Genre')
+
+# # Count the frequency of each genre
+# genre_counts = df['Genre'].value_counts()
+
+# # Extract the top two genres
+# top_two_genres = genre_counts.index[:2]
+
+# # Filter the dataset for the top two genres
+# genre_data = df[df['Genre'].isin(top_two_genres)]
+
+# # Group and aggregate data at the yearly level for the top two genres
+# grouped = genre_data.groupby(['Year', 'Genre']).size().reset_index(name='Count')
+
+
+
+
+# # Create an interactive line plot using plotly
+# fig = px.line(grouped, x='Year', y='Count', color='Genre', title='Comparison of Top Two Genres Over the Years')
+# # Customize background color
+# fig.update_layout(
+#     plot_bgcolor='lightgray',  # Change the background color to light gray
+#     xaxis=dict(showgrid=False),
+#     yaxis=dict(showgrid=False),
+# )
+
+# fig.update_xaxes(title_text='Year')
+# fig.update_yaxes(title_text='Frequency')
+# fig.show()
+
+
+# import pandas as pd
+# import plotly.express as px
+
+# # Load and preprocess the dataset
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
+# df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
+
+# # Split the genre column into a list of genres
+# df['Genre'] = df['Genre'].str.split(',')
+
+# # Explode the 'Genre' column to separate rows for each genre
+# df = df.explode('Genre')
+
+# # Count the frequency of each genre
+# genre_counts = df['Genre'].value_counts()
+
+# # Extract the top two genres
+# top_two_genres = genre_counts.index[:2]
+
+# # Filter the dataset for the top two genres
+# genre_data = df[df['Genre'].isin(top_two_genres)]
+
+# # Group and aggregate data at the yearly level for the top two genres
+# grouped = genre_data.groupby(['Year', 'Genre']).size().reset_index(name='Count')
+
+# # Create an interactive line plot using plotly
+# fig = px.line(grouped, x='Year', y='Count', color='Genre', title='Comparison of Top Two Genres Over the Years',
+#               line_shape='linear', labels={'Count': 'Frequency'})
+
+# # Customize line colors
+# fig.update_traces(line=dict(color=['blue', 'red']))
+
+# # Customize background color
+# fig.update_layout(
+#     plot_bgcolor='lightgray',  # Change the background color to light gray
+#     xaxis=dict(showgrid=False),
+#     yaxis=dict(showgrid=False),
+# )
+
+# fig.update_xaxes(title_text='Year')
+# fig.update_yaxes(title_text='Frequency')
+# fig.show()
+
+
+# import pandas as pd
+# import plotly.express as px
+
+# # Load and preprocess the dataset
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
+# df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
+
+# # Split the genre column into a list of genres
+# df['Genre'] = df['Genre'].str.split(',')
+
+# # Explode the 'Genre' column to separate rows for each genre
+# df = df.explode('Genre')
+
+# # Count the frequency of each genre
+# genre_counts = df['Genre'].value_counts()
+
+# # Extract the top two genres
+# top_two_genres = genre_counts.index[:2]
+
+# # Filter the dataset for the top two genres
+# genre_data = df[df['Genre'].isin(top_two_genres)]
+
+# # Group and aggregate data at the yearly level for the top two genres
+# grouped = genre_data.groupby(['Year', 'Genre']).size().reset_index(name='Count')
+
+# # Create an interactive line plot using plotly
+# fig = px.line(grouped, x='Year', y='Count', color='Genre', title='Comparison of Top Two Genres Over the Years',
+#               line_shape='linear', labels={'Count': 'Frequency'})
+
+# # Customize line colors using hex codes
+# fig.update_traces(line=dict(color=['#1f77b4', '#ff7f0e']))
+
+# # Customize background color
+# fig.update_layout(
+#     plot_bgcolor='lightgray',  # Change the background color to light gray
+#     xaxis=dict(showgrid=False),
+#     yaxis=dict(showgrid=False),
+# )
+
+# fig.update_xaxes(title_text='Year')
+# fig.update_yaxes(title_text='Frequency')
+# fig.show()
+
+
+
+import pandas as pd
+import plotly.express as px
+
+# Load and preprocess the dataset
+df = pd.read_csv("billboardHot100_1999-2019.csv")
+df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
+
+# Split the genre column into a list of genres
+df['Genre'] = df['Genre'].str.split(',')
+
+# Explode the 'Genre' column to separate rows for each genre
+df = df.explode('Genre')
+
+# Count the frequency of each genre
+genre_counts = df['Genre'].value_counts()
+
+# Extract the top two genres
+top_two_genres = genre_counts.index[:2]
+
+# Filter the dataset for the top two genres
+genre_data = df[df['Genre'].isin(top_two_genres)]
+
+# Group and aggregate data at the yearly level for the top two genres
+grouped = genre_data.groupby(['Year', 'Genre']).size().reset_index(name='Count')
+
+
+
+
+# Create an interactive line plot using plotly
+fig = px.line(grouped, x='Year', y='Count', color='Genre', title='Comparison of Top Two Genres Over the Years')
+# Customize background color
+fig.update_layout(
+    plot_bgcolor='lightgray',  # Change the background color to light gray
+    xaxis=dict(showgrid=False),
+    yaxis=dict(showgrid=False),
+)
+
+fig.update_xaxes(title_text='Year')
+fig.update_yaxes(title_text='Frequency')
+fig.show()
+
+
+# import pandas as pd
+# import plotly.express as px
+
+# # Load and preprocess the dataset
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
+# df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
+
+# # Split the genre column into a list of genres
+# df['Genre'] = df['Genre'].str.split(',')
+
+# # Explode the 'Genre' column to separate rows for each genre
+# df = df.explode('Genre')
+
+# # Count the frequency of each genre
+# genre_counts = df['Genre'].value_counts()
+
+# # Extract the top two genres
+# top_two_genres = genre_counts.index[:2]
+
+# # Filter the dataset for the top two genres
+# genre_data = df[df['Genre'].isin(top_two_genres)]
+
+# # Group and aggregate data at the yearly level for the top two genres
+# grouped = genre_data.groupby(['Year', 'Genre']).size().reset_index(name='Count')
+
+# # Create a bar chart using plotly express
+# fig = px.bar(grouped, x='Year', y='Count', color='Genre', title='Comparison of Top Two Genres Over the Years',
+#              labels={'Count': 'Frequency'})
+
+# # Customize background color
+# fig.update_layout(
+#     plot_bgcolor='lightgray',  # Change the background color to light gray
+#     xaxis=dict(showgrid=False),
+#     yaxis=dict(showgrid=False),
+# )
+
+# fig.update_xaxes(title_text='Year')
+# fig.update_yaxes(title_text='Frequency')
+# fig.show()
+
+
+# import pandas as pd
+# import plotly.express as px
+
+# # Load and preprocess the dataset
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
+# df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
+
+# # Split the genre column into a list of genres
+# df['Genre'] = df['Genre'].str.split(',')
+
+# # Explode the 'Genre' column to separate rows for each genre
+# df = df.explode('Genre')
+
+# # Count the frequency of each genre
+# genre_counts = df['Genre'].value_counts()
+
+# # Extract the top two genres
+# top_two_genres = genre_counts.index[:2]
+
+# # Filter the dataset for the top two genres
+# genre_data = df[df['Genre'].isin(top_two_genres)]
+
+# # Group and aggregate data at the yearly level for the top two genres
+# grouped = genre_data.groupby(['Year', 'Genre']).size().reset_index(name='Count')
+
+# # Create a grouped bar chart using plotly express
+# fig = px.bar(grouped, x='Year', y='Count', color='Genre', title='Comparison of Top Two Genres Over the Years',
+#              barmode='group', labels={'Count': 'Frequency'})
+
+# # # Customize background color
+# # fig.update_layout(
+# #     plot_bgcolor='lightgray',  # Change the background color to light gray
+# #     xaxis=dict(showgrid=False),
+# #     yaxis=dict(showgrid=False),
+# # )
+
+# fig.update_xaxes(title_text='Year')
+# fig.update_yaxes(title_text='Frequency')
+# fig.show()
+
+
+# import pandas as pd
+# import plotly.express as px
+
+# # Load and preprocess the dataset
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
+# df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
+
+# # Split the genre column into a list of genres
+# df['Genre'] = df['Genre'].str.split(',')
+
+# # Explode the 'Genre' column to separate rows for each genre
+# df = df.explode('Genre')
+
+# # Count the frequency of each genre
+# genre_counts = df['Genre'].value_counts()
+
+# # Extract the top two genres
+# top_two_genres = genre_counts.index[:2]
+
+# # Filter the dataset for the top two genres
+# genre_data = df[df['Genre'].isin(top_two_genres)]
+
+# # Group and aggregate data at the yearly level for the top two genres
+# grouped = genre_data.groupby(['Year', 'Genre']).size().reset_index(name='Count')
+
+# # Create a grouped bar chart using plotly express
+# fig = px.bar(grouped, x='Year', y='Count', color='Genre', title='Comparison of Top Two Genres Over the Years',
+#              barmode='group', labels={'Count': 'Frequency'})
+
+# # Customize background image
+# fig.update_layout(
+#     images=[dict(
+#         source="gradient_bg.png",  # Path to the JPEG background image
+#         xref="paper",
+#         yref="paper",
+#         x=0,
+#         y=1,
+#         xanchor="left",
+#         yanchor="top",
+#         sizing="stretch",
+#         opacity=1.0,  # Adjust the opacity as needed
+#         layer="below",
+#     )],
+#     xaxis=dict(showgrid=False),
+#     yaxis=dict(showgrid=False),
+#     plot_bgcolor='rgba(0,0,0,0)',  # Set plot background to transparent
+# )
+
+# fig.update_xaxes(title_text='Year')
+# fig.update_yaxes(title_text='Frequency')
+# fig.show()
