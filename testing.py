@@ -2163,46 +2163,46 @@
 
 
 
-import pandas as pd
-import plotly.express as px
+# import pandas as pd
+# import plotly.express as px
 
-# Load and preprocess the dataset
-df = pd.read_csv("billboardHot100_1999-2019.csv")
-df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
+# # Load and preprocess the dataset
+# df = pd.read_csv("billboardHot100_1999-2019.csv")
+# df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
 
-# Split the genre column into a list of genres
-df['Genre'] = df['Genre'].str.split(',')
+# # Split the genre column into a list of genres
+# df['Genre'] = df['Genre'].str.split(',')
 
-# Explode the 'Genre' column to separate rows for each genre
-df = df.explode('Genre')
+# # Explode the 'Genre' column to separate rows for each genre
+# df = df.explode('Genre')
 
-# Count the frequency of each genre
-genre_counts = df['Genre'].value_counts()
+# # Count the frequency of each genre
+# genre_counts = df['Genre'].value_counts()
 
-# Extract the top two genres
-top_two_genres = genre_counts.index[:2]
+# # Extract the top two genres
+# top_two_genres = genre_counts.index[:2]
 
-# Filter the dataset for the top two genres
-genre_data = df[df['Genre'].isin(top_two_genres)]
+# # Filter the dataset for the top two genres
+# genre_data = df[df['Genre'].isin(top_two_genres)]
 
-# Group and aggregate data at the yearly level for the top two genres
-grouped = genre_data.groupby(['Year', 'Genre']).size().reset_index(name='Count')
-
-
+# # Group and aggregate data at the yearly level for the top two genres
+# grouped = genre_data.groupby(['Year', 'Genre']).size().reset_index(name='Count')
 
 
-# Create an interactive line plot using plotly
-fig = px.line(grouped, x='Year', y='Count', color='Genre', title='Comparison of Top Two Genres Over the Years')
-# Customize background color
-fig.update_layout(
-    plot_bgcolor='lightgray',  # Change the background color to light gray
-    xaxis=dict(showgrid=False),
-    yaxis=dict(showgrid=False),
-)
 
-fig.update_xaxes(title_text='Year')
-fig.update_yaxes(title_text='Frequency')
-fig.show()
+
+# # Create an interactive line plot using plotly
+# fig = px.line(grouped, x='Year', y='Count', color='Genre', title='Comparison of Top Two Genres Over the Years')
+# # Customize background color
+# fig.update_layout(
+#     plot_bgcolor='lightgray',  # Change the background color to light gray
+#     xaxis=dict(showgrid=False),
+#     yaxis=dict(showgrid=False),
+# )
+
+# fig.update_xaxes(title_text='Year')
+# fig.update_yaxes(title_text='Frequency')
+# fig.show()
 
 
 # import pandas as pd
@@ -2338,3 +2338,46 @@ fig.show()
 # fig.update_xaxes(title_text='Year')
 # fig.update_yaxes(title_text='Frequency')
 # fig.show()
+
+
+
+import pandas as pd
+import plotly.express as px
+
+# Load and preprocess the dataset
+df = pd.read_csv("billboardHot100_1999-2019.csv")
+df['Year'] = pd.to_datetime(df['Week'], format='%d-%m-%Y')
+
+# Split the genre column into a list of genres
+df['Genre'] = df['Genre'].str.split(',')
+
+# Explode the 'Genre' column to separate rows for each genre
+df = df.explode('Genre')
+
+# Count the frequency of each genre
+genre_counts = df['Genre'].value_counts()
+
+# Extract the top two genres
+top_two_genres = genre_counts.index[:2]
+
+# Filter the dataset for the top two genres
+genre_data = df[df['Genre'].isin(top_two_genres)]
+
+# Group and aggregate data at the yearly level for the top two genres
+grouped = genre_data.groupby(['Year', 'Genre']).size().reset_index(name='Count')
+
+
+
+
+# Create an interactive line plot using plotly
+fig = px.line(grouped, x='Year', y='Count', color='Genre', title='Comparison of Top Two Genres Over the Years')
+# Customize background color
+fig.update_layout(
+    plot_bgcolor='lightgray',  # Change the background color to light gray
+    xaxis=dict(showgrid=False),
+    yaxis=dict(showgrid=False),
+)
+
+fig.update_xaxes(title_text='Year')
+fig.update_yaxes(title_text='Frequency')
+fig.show()
