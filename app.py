@@ -250,6 +250,19 @@ import numpy as np
 import pandas as pd
 from PIL import Image
 
+# Set the background color using CSS
+background_color = """
+<style>
+body {
+    background-color: #f0f0f0; /* Replace with your desired color code */
+}
+</style>
+"""
+
+# Render the background color using Markdown
+st.markdown(background_color, unsafe_allow_html=True)
+
+
 # Create a slideshow
 images = [Image.open("image/taylor_swift.jpg"), Image.open("image/drake.jpg"), Image.open("image/madonna.jpg")]
 st.sidebar.image(images)
