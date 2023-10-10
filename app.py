@@ -252,7 +252,7 @@ from PIL import Image
 
 # Create a slideshow
 images = [Image.open("image/taylor_swift.jpg"), Image.open("image/drake.jpg"), Image.open("image/madonna.jpg")]
-slideshow = st.image(images, width=500, height=300)
+slideshow = st.image(images)
 
 # Create a function for each button
 def analysis_of_artists():
