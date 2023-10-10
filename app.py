@@ -252,7 +252,7 @@ from PIL import Image
 
 # Create a slideshow
 images = [Image.open("image/taylor_swift.jpg"), Image.open("image/drake.jpg"), Image.open("image/madonna.jpg")]
-slideshow = st.image(images)
+st.sidebar.image(images)
 
 # Create a function for each button
 def analysis_of_artists():
@@ -285,8 +285,8 @@ def genre_predicted():
 # Add the buttons and slideshow to the Streamlit home page
 st.title("Streamlit Home Page")
 
-# Add the slideshow
-st.sidebar.write(slideshow)
+# # Add the slideshow
+# st.sidebar.write(slideshow)
 
 # Add the buttons
 st.sidebar.button("Analysis of Artists", on_click=analysis_of_artists)
