@@ -228,11 +228,12 @@ if selected_option == "Top 5":
         st.pyplot(plt.gcf())
 
 elif selected_option == "Comparison":
-    # Plot the graph for the top 5 artists
+
+    # Plot the graph for the top 5 artistss
     plt.figure(figsize=(10, 6))
-    for artist in top_5_artists:
-        artist_data = grouped[grouped['Artists'] == artist]
-        plt.plot(artist_data['Year'], artist_data['Count'], label=artist)
+    for artists in top_5_artists:
+        artists_data = grouped[grouped['Artists'] == artists]
+        plt.plot(artists_data['Year'], artists_data['Count'], label=artists)
 
     plt.xlabel('Year')
     plt.ylabel('Artist Count')
@@ -240,9 +241,5 @@ elif selected_option == "Comparison":
     plt.legend()
     plt.show()
 
-    # Display the descriptions and images for all top 5 artists
-    for artist in top_5_artists:
-        st.subheader(f"About {artist}")
-        st.markdown(artist_data[artist]['description'])
-        image = Image.open(artist_data[artist]['image_path'])
-        st.image(image, caption=artist)
+    # Display the line chart for the top 5 artists
+    st.pyplot(plt.gcf())
