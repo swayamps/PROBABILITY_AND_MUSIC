@@ -263,9 +263,9 @@ body {
 st.markdown(background_color, unsafe_allow_html=True)
 
 
-# Create a slideshow
-images = [Image.open("image/taylor_swift.jpg"), Image.open("image/drake.jpg"), Image.open("image/madonna.jpg")]
-st.sidebar.image(images)
+# # Create a slideshow
+# images = [Image.open("image/taylor_swift.jpg"), Image.open("image/drake.jpg"), Image.open("image/madonna.jpg")]
+# st.sidebar.image(images)
 
 # Create a function for each button
 def analysis_of_artists():
