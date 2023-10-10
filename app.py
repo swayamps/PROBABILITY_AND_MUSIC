@@ -46,8 +46,8 @@ if selected_option == "Top 5":
 
     # Display the image and about us section for the selected artist
     if selected_artist == 'Taylor Swift':
-        # image = Image.open('taylor_swift.jpg')
-        # st.image(image, caption='Taylor Swift')
+        image = Image.open('image/taylor_swift.jpg')
+        st.image(image, caption='Taylor Swift')
         st.markdown("""
         ## About Taylor Swift
 
@@ -58,8 +58,8 @@ if selected_option == "Top 5":
         # Display the line chart for the selected artist
         st.pyplot(plt.gcf())
     elif selected_artist == 'Elton John':
-        # image = Image.open('elton_john.jpg')
-        # st.image(image, caption='Elton John')
+        image = Image.open('image/elton_john.jpg')
+        st.image(image, caption='Elton John')
         st.markdown("""
         ## About Elton John
 
@@ -69,8 +69,8 @@ if selected_option == "Top 5":
         """)
         st.pyplot(plt.gcf())
     elif selected_artist == 'Madonna':
-        # image = Image.open('madonna.jpg')
-        # st.image(image, caption='Madonna')
+        image = Image.open('image/madonna.jpg')
+        st.image(image, caption='Madonna')
         st.markdown("""
         ## About Madonna
 
@@ -80,8 +80,8 @@ if selected_option == "Top 5":
         """)
         st.pyplot(plt.gcf())
     elif selected_artist == 'Drake':
-        # image = Image.open('drake.jpg')
-        # st.image(image, caption='Drake')
+        image = Image.open('image/drake.jpg')
+        st.image(image, caption='Drake')
         st.markdown("""
         ## About Drake
 
@@ -91,8 +91,8 @@ if selected_option == "Top 5":
         """)
         st.pyplot(plt.gcf())
     elif selected_artist == 'Kenny Chesney':
-        # image = Image.open('kenny_chesney.jpg')
-        # st.image(image, caption='Kenny Chesney')
+        image = Image.open('image/kenny_chesney.jpg')
+        st.image(image, caption='Kenny Chesney')
         st.markdown("""
         ## About Kenny Chesney
 
