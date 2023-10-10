@@ -216,7 +216,7 @@ if selected_option == "Top 5":
         """)
         st.pyplot(plt.gcf())
     elif selected_artist == 'Kenny Chesney':
-        image = Image.open('kenny_chesney.jpg')
+        image = Image.open('image/kenny_chesney.jpg')
         st.image(image, caption='Kenny Chesney')
         st.markdown("""
         ## About Kenny Chesney
